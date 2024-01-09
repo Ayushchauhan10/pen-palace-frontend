@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Vibur&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+.font-cursive-style {
+    font-family: 'Vibur';
+}
+.font-ubuntu-style {
+  font-family: 'Ubuntu', sans-serif;
+}
+/* styles.css */
+@keyframes navBarItems1 {
+    from {
+      right: 0;
+      top: -1.5rem;
+      opacity: 0;
+    }
+    to {
+      right: 6.7rem;
+      top: -1.5rem;
+      opacity: 1;
+    }
+  }
+@keyframes navBarItems2 {
+    /* right-[5rem] top-[3.3rem] */
+    from {
+      right: 0;
+      top: 0;
+      opacity: 0;
+    }
+    to {
+      right: 5rem;
+      top:   2.8rem;
+      opacity: 1;
+    }
+  }
+@keyframes navBarItems3 {
+    /* right-[1.8rem] top-[7.2rem] */
+    from {
+      right: 0;
+      top: 0rem;
+      opacity: 0;
+    }
+    to {
+      right: 1.8rem;
+      top: 6.2rem;
+      opacity: 1;
+    }
+  }
+@keyframes navBarItems4 {
+    /* -right-[3.3rem] top-[8.5rem] */
+    from {
+      right: 0;
+      top: 0rem;
+      opacity: 0;
+    }
+    to {
+      right: -2.8rem;
+      top: 7.2rem;
+      opacity: 1;
+    }
+  }
+  
+  .animate-navBarItems1   {
+    animation-name: navBarItems1;
+    animation-duration: 0.5s; 
+    animation-fill-mode: forwards; 
+    animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+  .animate-navBarItems2   {
+    animation-name: navBarItems2;
+    animation-duration: 0.5s; 
+    animation-fill-mode: forwards; 
+    animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+  .animate-navBarItems3   {
+    animation-name: navBarItems3;
+    animation-duration: 0.5s; 
+    animation-fill-mode: forwards; 
+    animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+  .animate-navBarItems4   {
+    animation-name: navBarItems4;
+    animation-duration: 0.5s; 
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28); 
+  }
+  
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+.slick-slide > div{
+   margin:0 10px;
+}
+
+/* Footer.css */
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.backg{
+   /* background: from-[#] via-[#]  to-[#]; */
+   background: linear-gradient(45deg,#11172A, #11172A, #2b466c, #151C33);
+   background-size: 200% 200%;
+   animation: gradientAnimation 5s infinite;
+   transition: all 0.5s ease;
+   /* color: #fff; */
+   /* padding: 2rem; */
+}
+
+
+
+.footer p {
+  margin: 0;
+}
