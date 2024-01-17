@@ -28,7 +28,9 @@ const Dashboard = () => {
     }, []);
 
     if(!profile)
-        return <Loader/>
+    return <div className='flex h-screen items-center justify-center'>
+    <Loader/>
+</div>;
 
     return (
         <div className='no-scrollbar w-full md:w-10/12 lg:w-8/12 px-2 flex flex-col gap-y-10 mx-auto mt-3 text-white'>

@@ -4,7 +4,6 @@ import {  Link,useNavigate } from 'react-router-dom'
 import { FaBlog } from "react-icons/fa6";
 import './../index.css';
 import { BsPersonCircle } from "react-icons/bs";
-import { RiLogoutCircleRFill } from 'react-icons/ri'
 import { IoMdLogOut } from "react-icons/io";
 
 import { MdDashboardCustomize } from "react-icons/md";
@@ -23,7 +22,7 @@ export const Navbar = () => {
        setShowNav(!showNav);
   }
   return (
-    <div className='w-full sm:w-10/12 mx-auto flex flex-row justify-between  mt-4 px-2 text-xl sm:text-3xl z-[100]'>
+    <div className='w-full sm:w-10/12 mx-auto flex flex-row justify-between  mt-4  text-xl sm:text-3xl z-[100] px-6'>
       <Link to='/'>
         <div className='flex flex-row gap-2 text-headingColor  items-baseline justify-center '>
           <FaBlog className='animate-pulse'/>

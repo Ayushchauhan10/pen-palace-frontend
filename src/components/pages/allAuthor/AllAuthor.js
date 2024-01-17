@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllAuthor } from '../../../services/operations/authorAPI';
 import AuthorCard from './AuthorCard';
-import Slider from 'react-slick'; // Import the Slider component from react-slick
-import 'slick-carousel/slick/slick.css'; // Import the styles for the carousel
-import 'slick-carousel/slick/slick-theme.css'; // Import the theme styles
+import Slider from 'react-slick'; 
+import 'slick-carousel/slick/slick.css'; 
+import 'slick-carousel/slick/slick-theme.css'; 
 import Loader from '../../Loader';
 
 const AllAuthor = () => {
@@ -13,13 +13,13 @@ const AllAuthor = () => {
 
   useEffect(() => {
     dispatch(fetchAllAuthor());
-  }, []);
-
+  }, [dispatch]);
+  
   var settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    // slidesToShow: 3,
     slidesToScroll: 1,
     initialSlide: 0,
     className: "center",
@@ -61,20 +61,27 @@ const AllAuthor = () => {
 
   return (
     <div className='text-white py-4 w-full mx-auto mt-4 px-2 '>
-      <div className='text-xl sm:text-2xl text-headingColor mb-4'>
+      <div className='text-md font-semibold sm:text-2xl text-headingColor mb-4'>
         Meet the Minds
       </div>
       <div className='mx-auto lg:w-[900px] md:w-[800px] w-[350px] px-3  '>
 
-        {
-          allAuthor ? <Slider {...settings}>
-          {allAuthor?.map((author, index) => (
-            <div className='flex flex-row gap-1' >
-              <AuthorCard author={author} />
+              {
+          allAuthor ? (
+            <Slider {...settings}>
+             { allAuthor?.map((author, index) => (
+                <div className='flex  gap-1' key={author._id}>
+                  <AuthorCard author={author} />
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            <div className='w-full flex items-center justify-center'>
+              <Loader />
             </div>
-          ))}
-        </Slider>:
-       <div className='w-full flex items-center justify-center'> <Loader/></div>}
+  )
+}
+
 
       </div>
     </div>

@@ -7,7 +7,8 @@ const MyBlogSection = () => {
     const { blogs } = useSelector((state) => state.blog);
     const { profile } = useSelector((state) => state.profile);
     const { firstName, lastName } = profile ?? {};
-    if(!blogs)    return <div className='min-h-[300px] flex items-center justify-center'><Loader/></div>
+    if(!blogs)   
+       return <div className='min-h-[300px] flex items-center justify-center'><Loader/></div>
     return (
         <>
             {

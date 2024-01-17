@@ -59,7 +59,7 @@ const CommentCard = ({ comment,loading,setLoading }) => {
 
             <div className="flex flex-col items-start gap-y-1  w-full">
                 <div className="flex flex-row items-center gap-x-2 justify-center">
-                    <p className="text-sm font-semibold text-slate-200">{`${author.firstName} ${author.lastName}`}</p>
+                    <p className="text-xs font-semibold text-slate-200">{`${author.firstName} ${author.lastName}`}</p>
                     <span className="text-gray-400 text-xs ">{upDated}</span>
 
                 </div>

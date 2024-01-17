@@ -36,7 +36,7 @@ const UserCommentCard = ({ comment }) => {
         <div className="flex flex-col w-full items-start justify-start px-2 pt-2 pb-3 gap-2 sm:py-2 sm:px-6 bg-lightNavy rounded-3xl ">
             <div className=""
                 onClick={handleClick}>
-                <p className="text-md sm:text-lg font-semibold ml-2 hover:underline cursor-pointer">{blog?.title}</p>
+                <p className="text-md sm:text-lg font-semibold ml-2 hover:underline cursor-pointer underline offset-10 px-2 text-headingColor">{blog?.title}</p>
 
             </div>
             <div className="flex flex-row items-center gap-x-2 justify-center">

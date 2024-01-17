@@ -69,6 +69,18 @@ const UpdateBlog = () => {
         setLoading(true);
         const formData = new FormData();
         formData.append("displayPicture", imageFile);
+        if (!imageFile) {
+            try {
+                dispatch(updateBlog(blogInfo?._id, title, category, previewSource, shortDescription, content, navigate, token));
+            }
+            catch (error) {
+                console.error("Error:", error);
+
+            }
+            setLoading(false);
+            return;
+
+        }
         dispatch(uploadThumbnail(formData, token))
             .then((image) => {
                 dispatch(updateBlog(blogInfo?._id, title, category, image, shortDescription, content, navigate, token));
@@ -86,8 +98,11 @@ const UpdateBlog = () => {
         }
     }, [imageFile])
 
-    if(loading)
-    return <Loader/>;
+    if (loading)
+        return <div className='flex h-screen items-center justify-center'>
+            <Loader />
+        </div>;
+
     return (
         <div className='w-full px-2 sm:w-8/12 mx-auto mt-8 flex flex-col justify-around space-y-6 pb-10 text-textColor'>
             <div className='font-semibold text-2xl text-headingColor sm:text-3xl mb-6'>
@@ -139,7 +154,7 @@ const UpdateBlog = () => {
                                 className="aspect-video w-full sm:h-60 rounded-xl object-contain"
                             />
                             <div className="space-y-2 space-x-2 flex flex-col justify-center items-center">
-                                
+
                                 <div className="flex flex-row gap-4">
                                     <input
                                         type="file"
@@ -208,7 +223,7 @@ const UpdateBlog = () => {
                     className='rounded-xl bg-slate-400 hover:text-slate-50 transition-all duration-200 max-w-max'>
                     <div className='py-1 px-6 '>
                         {loading ? <>Loading...</> : <>Submit</>}
-                        </div>
+                    </div>
                 </button>
             </div>
         </div>

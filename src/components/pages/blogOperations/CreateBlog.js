@@ -84,7 +84,10 @@ const CreateBlog = () => {
     }, [imageFile])
 
   if(loading)
-  return <Loader/>;
+  return <div className='flex h-screen items-center justify-center'>
+  <Loader/>
+</div>;
+
     return (
         <div className='w-full px-2 sm:w-8/12 mx-auto mt-8 flex flex-col justify-around space-y-6 pb-10 text-textColor'>
             <div className='font-semibold text-2xl text-headingColor sm:text-3xl mb-6'>

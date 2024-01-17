@@ -2,7 +2,6 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom"
 import { FaEdit } from "react-icons/fa";
-import Loader from '../../Loader';
 const MyProfileSection = () => {
     
     const { profile } = useSelector((state) => state.profile);

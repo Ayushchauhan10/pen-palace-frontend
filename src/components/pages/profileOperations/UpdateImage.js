@@ -15,7 +15,9 @@ const UpdateImage = ({ profile }) => {
 
     const fileInputRef = useRef(null)
     if(loading)
-     return <Loader/>;
+    return <div className='flex h-screen items-center justify-center'>
+        <Loader/>
+    </div>;
      
     const handleClick = () => {
         fileInputRef.current.click()

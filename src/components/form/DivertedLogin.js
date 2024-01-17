@@ -35,13 +35,15 @@ function DivertedLogin() {
   }
 
   if(loading)
-  return <Loader/>;
+  return <div className='flex h-screen items-center justify-center'>
+        <Loader/>
+    </div>;
 
   return (
 
 
     <div className="w-full sm:w-6/12 px-2 flex flex-col mx-auto items-center justify-center sm:gap-5  mt-20 h-[60vh] ">
-      <div className=" sm:px-7 sm:py-2 text-headingColor font-bold rounded-[1em] text-[1.3rem] sm:text-[2rem] ">
+      <div className=" sm:px-7 sm:py-2 text-headingColor font-bold rounded-[1em] text-[2rem] sm:text-[2rem] ">
         Welcome !!! 
       </div>
       <div className="text-white font-2xl">
@@ -70,7 +72,7 @@ function DivertedLogin() {
               value={email}
               onChange={handleOnChange}
               placeholder="Enter email address"
-              className=" text-xs w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
+              className=" text-md w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
             />
 
           </div>
@@ -94,7 +96,7 @@ function DivertedLogin() {
                 value={password}
                 onChange={handleOnChange}
                 placeholder="Enter Password"
-                className=" text-xs w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
+                className=" text-md w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
               />
               <span
                 onClick={() => setShowPassword((prev) => !prev)}
@@ -128,13 +130,13 @@ function DivertedLogin() {
 
         <button
           type="submit"
-          className="bg-slate-500 px-7 py-2 text-headingColor font-bold rounded-[1em] text-[1rem] hover:bg-slate-600">
+          className="bg-slate-500 px-7 py-2 text-headingColor font-bold rounded-[1em] text-[1.5rem] hover:bg-slate-600">
 
 
           {loading ? "Loading..." : "Log In"}
         </button>
 
-        <Link to="/signup" className=" text-sm text-blue-100 mx-auto hover:underline">New User? <span className="text-headingColor">SignUp</span></Link>
+        <Link to="/signup" className=" text-md text-blue-100 mx-auto hover:underline">New User? <span className="text-headingColor">SignUp</span></Link>
 
       </form>
     </div>

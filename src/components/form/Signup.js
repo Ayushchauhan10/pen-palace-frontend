@@ -67,7 +67,7 @@ function Signup() {
               value={email}
               onChange={handleOnChange}
               placeholder="Enter email address"
-              className=" text-xs w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
+              className=" text-md w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
             />
 
           </div>
@@ -91,7 +91,7 @@ function Signup() {
               value={userId}
               onChange={handleOnChange}
               placeholder="Enter User ID"
-              className=" text-xs w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
+              className=" text-md w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
             />
 
           </div>
@@ -115,7 +115,7 @@ function Signup() {
                 value={firstName}
                 onChange={handleOnChange}
                 placeholder="Enter First Name"
-                className=" text-xs w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
+                className=" text-md w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
               />
 
             </div>
@@ -136,7 +136,7 @@ function Signup() {
                 value={lastName}
                 onChange={handleOnChange}
                 placeholder="Enter Last Name"
-                className=" text-xs w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
+                className=" text-md w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
               />
 
             </div>
@@ -162,7 +162,7 @@ function Signup() {
                   value={password}
                   onChange={handleOnChange}
                   placeholder="Enter Password"
-                  className=" text-xs w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
+                  className=" text-md w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
                 />
                 <span
                   onClick={() => setShowPassword((prev) => !prev)}
@@ -197,7 +197,7 @@ function Signup() {
                   value={confirmPassword}
                   onChange={handleOnChange}
                   placeholder="Confirm Your Password"
-                  className=" text-xs w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
+                  className=" text-md w-full py-1 rounded-xl bg-richblack-800 px-3  placeholder-slate-400 outline-none"
                 />
                 <span
                   onClick={() => setShowConfirmPassword((prev) => !prev)}
@@ -219,7 +219,7 @@ function Signup() {
         <div className="flex flex-col gap-2 ">
           <button
             type="submit"
-            className="bg-slate-500 px-7 py-2 text-headingColor font-bold rounded-[1em] text-[1rem] hover:bg-slate-600">
+            className="bg-slate-500 px-7 py-2 text-headingColor font-bold rounded-[1em] text-[1.5rem] hover:bg-slate-600">
             Sign Up
           </button>
           <div className="text-xs text-white hover:underline ml-auto">

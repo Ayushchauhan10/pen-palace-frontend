@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { deleteBlog, fetchBlog } from '../../../services/operations/blogAPI';
-import { FaDollarSign } from 'react-icons/fa';
+import { LiaTelegramPlane } from "react-icons/lia";
+import { toast } from "react-hot-toast"
 import { AiOutlineHeart, AiFillHeart, AiTwotoneDelete } from 'react-icons/ai';
 import { FaShare } from 'react-icons/fa';
 import { CiEdit } from "react-icons/ci";
@@ -10,6 +11,7 @@ import { dislikeBlog, likeBlog } from '../../../services/operations/likeAPI';
 import CommentCard from './CommentCard';
 import AddComment from './AddComment';
 import Loader from '../../Loader';
+import { BsQrCodeScan } from "react-icons/bs";
 const copy = require('copy-to-clipboard');
 
 const ViewBlog = () => {
@@ -26,29 +28,34 @@ const ViewBlog = () => {
     const [likess, setLikess] = useState(0);
     const [loading, setLoading] = useState(false);
 
-
+    
     const likeHandler = () => {
-        dispatch(likeBlog(blogInfo?._id, setLoading, token, setLiked));
+        dispatch(likeBlog(blogInfo?._id, setLoading, token))
+
+            setLiked(true);
+            setLikess(likess+1);
+
     }
     const dislikeHandler = () => {
-        dispatch(dislikeBlog(blogInfo?._id, setLoading, token, setLiked));
+        dispatch(dislikeBlog(blogInfo?._id, setLoading, token));
+        setLiked(false);
+            setLikess(likess-1);
     }
-
-
     useEffect(() => {
         dispatch(fetchBlog(blogId));
-    }, [blogId, loading, dispatch]);
-
+    }, [blogId]);
 
     useEffect(() => {
         if (blogInfo) {
             setLikess(blogInfo?.likes.length)
-            const res = likes.some(like => {
-                return like.blog?._id === blogInfo?._id;
-            });
-            setLiked(res);
+            if(token){
+                const res = likes.some(like => {
+                    return like.blog?._id === blogInfo?._id;
+                });
+                setLiked(res);
+            }
         }
-    }, [blogInfo?.likes]);
+    }, [blogInfo]);
 
    
     
@@ -67,14 +74,26 @@ const ViewBlog = () => {
         dispatch(deleteBlog(blogInfo._id, token, navigate));
     }
 
+    const copyFunction=() => {
+        copy(new URL(window.location.href))
+        toast.success("URL Copied to Clipboard")
+    };
+
+    const supportFunction=()=>{
+        // console.log("hello")
+        toast.success("Thanks for supporting");
+    }
+
     if(loading)
-    return <Loader/>;
+    return <div className='flex h-screen items-center justify-center'>
+        <Loader/>
+    </div>;
 
 
     return (
-        <div className=' w-full md:w-10/12 lg:w-10/12 flex flex-col  items-center gap-5 mx-auto  px-1 pb-10'>
+        <div className=' w-full md:w-10/12 lg:w-10/12 flex flex-col  items-center gap-5 mx-auto  px-3 pb-10 mt-5 '>
             {/* blog */}
-            <div className='relative flex flex-col gap-2 text-white md:w-8/12 mx-auto '>
+            <div className='relative flex flex-col gap-0 text-white md:w-8/12 mx-auto '>
                 {
                     editable && (<div className='absolute top-10 right-2 text-lg sm:text-2xl gap-2 flex items-center justify-center'>
                         <button onClick={() => navigate('/updateBlog')}>
@@ -87,63 +106,67 @@ const ViewBlog = () => {
                 }
                 {/* {title} */}
                 <div className='mx-0'>
-                    <h1 className='text-lg sm:text-xl text-headingColor  py-1 rounded-3xl font-bold italic'>
+                    <h1 className='text-3xl  text-headingColor  py-1 rounded-3xl font-bold italic'>
                         {title ? title : 'No Title'}
                     </h1>
                 </div>
 
                 {/* author */}
-                <div className='text-xs sm:text-sm hover:underline cursor-pointer text-lightText'
+                <div className='text-xs sm:text-sm hover:underline cursor-pointer text-lightText pl-2'
                     onClick={() => navigate(`/author/${blogInfo?.author?._id}`)}>
                     By: {firstName ? firstName + ' ' + lastName : "authorname"}
                 </div>
 
                 {/* thumbnail */}
-                <div className='mx-auto w-full sm:w-[60%] py-2 px-2 '>
+                <div className='mx-auto w-full sm:w-[60%] py-2 overflow-hidden  '>
                     <img src={thumbnail} alt=" thumbnail "
                         className="w-full  z-[-100] rounded-2xl aspect-video  sm:h-60 object-contain"
                     />
                 </div>
 
                 {/* likes and support */}
-                <div className='flex flex-row gap-4  h-[2em] text-gray-300 text-sm sm:text-md'>
+               <div className='flex flex-col my-4 gap-1 '>
+               <div className='flex flex-row gap-6  h-[2em] text-gray-300 text-sm sm:text-md '>
                     {/* likes */}
-                    <div className='cursor-pointer flex flex-row items-center  gap-1 ' >
-
+                    <div className='cursor-pointer flex items-center  justify-center text-lg' >
                         <button
                             // onClick={handleLikeClick}
-                            disabled={loading}
+                            disabled={loading || !token}
                             className='w-6'
                         >
                             {liked ? (
-                                <AiFillHeart className="mr-1 text-red-500  text-xl sm:text-2xl" onClick={dislikeHandler} />
+                                <AiFillHeart className="mr-1 text-red-500  text-4xl " onClick={dislikeHandler} />
                             ) : (
-                                <AiOutlineHeart className="text-lg sm:text-xl" onClick={likeHandler} />
+                                <AiOutlineHeart className="text-4xl " onClick={likeHandler} />
                             )}
                         </button>
-                        {likess}
                     </div>
 
-                    <div className="cursor-pointer flex flex-row items-center justify-around gap-2 w-auto ">
-                        <FaDollarSign />
-                        Support
+                    <div className="cursor-pointer flex items-center  justify-center text-2xl hover:text-headingColor" onClick={supportFunction}>
+                    <BsQrCodeScan />
+
                     </div>
-                    <div className="cursor-pointer flex items-center w-auto gap-2 justify-center " onClick={() => copy(new URL(window.location.href))}>
-                        <FaShare />
-                        Share
+                    
+                    <div className="cursor-pointer flex items-center justify-center text-3xl hover:text-headingColor" onClick={copyFunction}>
+                      <LiaTelegramPlane />
                     </div>
                 </div>
+
+                <div className='ml-1 text-sm text-slate-300'>
+                    {likess} likes
+                </div>
+               </div>
 
                 <div className=' text-gray-300 mt-[-1] text-sm sm:text-md'>
                     <div>Last Updated : {date} at {" "} {time}</div>
                 </div>
 
                 <div className='mt-3  bg-lightNavy px-5 py-4 rounded-2xl flex flex-col gap-5'>
-                    <div className='flex flex-row text-sm sm:text-md'>
-                        <div>Categories :</div>
-                        <div> {category}</div>
+                    <div className='flex flex-row text-md sm:text-md gap-1'>
+                        <div>Categories:</div>
+                        <div className='text-headingColor'> {category}</div>
                     </div>
-                    <div className='text-sm sm:text-[1rem] leading-relaxed'>
+                    <div className='text-md sm:text-[1rem] leading-relaxed'>
                         <div dangerouslySetInnerHTML={{ __html: longDescription }} />
                     </div>
                 </div>
@@ -156,7 +179,7 @@ const ViewBlog = () => {
                     <h1 className='text-headingColor '>Comments :</h1>
                 </div>
 
-                <div className='flex flex-col gap-2 w-full'>
+                <div className='flex flex-col gap-2 w-full text-md'>
                     <AddComment blogId={blogId} loading={loading} setLoading={setLoading} />
 
                     {
