@@ -6,7 +6,7 @@ const AuthorCard = ({author}) => {
 
   return (
         <div onClick={()=>{ navigate(`/author/${author?._id}`)}}
-        className='max-w-[250px] bg-white  gap-10 flex flex-col h-[180px] sm:h-[220px] items-center justify-center rounded-3xl overflow-hidden'>
+        className='max-w-[250px]  bg-white  gap-10 flex flex-col  h-[220px] items-center justify-center rounded-3xl overflow-hidden'>
             
               <div className='h-[100%] relative sm:h-[220px] bg-headingColor w-full flex items-center justify-center  '>
                     <div className=' absolute  top-8 sm:top-12 rounded-full '>
@@ -14,7 +14,7 @@ const AuthorCard = ({author}) => {
                     </div>
               </div>
 
-              <div className='bg-white h-[100%] flex flex-col items-center justify-center gap-2 '>
+              <div className='bg-white h-[100%] flex flex-col items-center justify-center gap-2 pb-3'>
 
 
                   <div className='text-lightNavy font-semibold text-md '>
