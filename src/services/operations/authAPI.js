@@ -27,7 +27,7 @@ export function signUp(
     navigate
 ) {
     return async (dispatch) => {
-        if (password != confirmPassword) {
+        if (password !== confirmPassword) {
             toast.error("Passwords do not match");
             return;
         }

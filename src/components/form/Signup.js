@@ -31,14 +31,19 @@ function Signup() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-
+  
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       console.error("Invalid email format");
       return;
     }
-    dispatch(signUp(firstName, lastName, email, userId, password, confirmPassword, navigate));
+  
+    // Convert email to lowercase
+    const lowercaseEmail = formData.email.toLowerCase();
+  
+    dispatch(signUp(firstName, lastName, lowercaseEmail, userId, password, confirmPassword, navigate));
   };
+  
 
 
 
@@ -178,8 +183,9 @@ function Signup() {
 
 
             </div>
+
             <div className="flex flex-col sm:flex-row  gap-1 sm:gap-4 justify-center sm:px-4 w-full">
-              <div className="w-[220px] flex flex-row justify-between items-center text-[0.875rem] text-slate-400">
+              <div className="w-[120px] flex flex-row justify-between items-center text-[0.875rem] text-slate-400">
                 <div className="w-full" >
                   Confirm Password
                 </div>

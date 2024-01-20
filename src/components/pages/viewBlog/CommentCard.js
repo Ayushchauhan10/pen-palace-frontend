@@ -4,7 +4,7 @@ import { CiEdit } from "react-icons/ci";
 import { IoIosCheckmark } from "react-icons/io";
 import { deleteComment, editComment } from '../../../services/operations/commentAPI';
 import { AiOutlineDelete } from "react-icons/ai";
-
+import { Link } from 'react-router-dom';
 
 
 const CommentCard = ({ comment,loading,setLoading }) => {
@@ -59,7 +59,10 @@ const CommentCard = ({ comment,loading,setLoading }) => {
 
             <div className="flex flex-col items-start gap-y-1  w-full">
                 <div className="flex flex-row items-center gap-x-2 justify-center">
-                    <p className="text-xs font-semibold text-slate-200">{`${author.firstName} ${author.lastName}`}</p>
+                <Link to={`author/${author._id}`}>
+                   
+                    <p className="text-xs font-semibold text-slate-200 hover:underline">{`${author.firstName} ${author.lastName}`}</p>
+                   </Link>
                     <span className="text-gray-400 text-xs ">{upDated}</span>
 
                 </div>

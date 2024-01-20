@@ -65,6 +65,7 @@ const CreateBlog = () => {
     }
 
     const handleOnSubmit = () => {
+        setLoading(true);
         const formData = new FormData();
         formData.append("displayPicture", imageFile);
         dispatch(uploadThumbnail(formData, token, setLoading))
@@ -74,6 +75,8 @@ const CreateBlog = () => {
             .catch((error) => {
                 console.error("Error:", error);
             });
+
+                setLoading(false);
     };
 
 

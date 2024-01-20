@@ -62,7 +62,7 @@ export function createBlog(title, category, thumbnail, shortDescription, longDes
     return async (dispatch) => {
 
         const toastId = toast.loading("Loading...")
-        setLoading(true);
+        // setLoading(true);
         try {
             const response = await apiConnector("POST", CREATE_BLOG_API,
                 { title, category, thumbnail, shortDescription, longDescription },
@@ -82,7 +82,7 @@ export function createBlog(title, category, thumbnail, shortDescription, longDes
             toast.error(error.response.data.message);
         }
         toast.dismiss(toastId)
-        setLoading(false);
+        // setLoading(false);
     }
 }
 

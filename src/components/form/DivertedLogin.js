@@ -31,7 +31,8 @@ function DivertedLogin() {
   const handleOnSubmit = (e) => {
 
     e.preventDefault()
-    dispatch(login(email, password, navigate));
+    const lowercaseEmail = email.toLowerCase();
+    dispatch(login(lowercaseEmail, password, navigate));
   }
 
   if(loading)
